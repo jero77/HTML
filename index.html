@@ -6,7 +6,26 @@
   </head>
 
   <body>
-    
+    <div class="container">
+
+      <div class="main">
+        <h2>Authenticate User</h2>
+
+        <form class="form_id" method="post" id="loginform">
+            <label>Username:</label>
+            <input type="text" id="username">
+            <label>Password:</label>
+            <input type="password" id="password">
+            <input type="button" id="loginbutton" onclick="validate()">
+        </form>
+
+        <span>
+          <b class="note">Note: </b>Use the following user&pass.<br/>
+          <b class="valid">Username='guestuser' Password='noadmin'</b>
+        </span>
+      </div>
+
+    </div>
   </body>
 
 </html>
