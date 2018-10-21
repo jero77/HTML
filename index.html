@@ -13,6 +13,9 @@
         var filebuffer = FS.readFileSync('db/test.db');
         var db = new SQL.Database(filebuffer);
 
+        db.run("INSERT INTO Food (Name) VALUES ('Schnitzel');");
+        db.run("INSERT INTO Food (Name) VALUES ('Suppe');");
+        
         var contents = db.exec("SELECT * FROM Food;");
         document.getElementById("span1").innerHTML = contents;
       }
