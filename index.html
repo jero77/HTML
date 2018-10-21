@@ -2,23 +2,35 @@
   <head>
     <title>Test sql.js</title>
     <link rel="stylesheet" href="css/style.css"/>
+
     <script type="text/javascript" src="js/sql.js" charset="utf-8"></script>
+
+    <script type="text/javascript">
+      function test() {
+        //load the database
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/db/test.db', true);
+        xhr.responseType = 'arraybuffer';
+
+        xhr.onload = e => {
+          var uInt8Array = new Uint8Array(this.response);
+          var db = new SQL.Database(uInt8Array);
+          var contents = db.exec("INSERT INTO Food (Name) Values (\"Leckeres Essen\"); SELECT * FROM ;");
+        }
+        xhr.send()
+      }
+
+    </script>
   </head>
 
   <body>
-    <script type="text/javascript">
-      //load the database
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', '/db/test.db', true);
-      xhr.responseType = 'arraybuffer';
+    <h1>
+      the content is:
+      <script type="text/javascript">
+        document.write(content)
+      </script>
+    </h1>
 
-      xhr.onload = e => {
-        var uInt8Array = new Uint8Array(this.response);
-        var db = new SQL.Database(uInt8Array);
-        var contents = db.exec("INSERT INTO Food (Name) Values (\"Leckeres Essen\"); SELECT * FROM ;");
-      }
-      xhr.send()
-    </script>
   </body>
 
 </html>
