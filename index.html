@@ -8,27 +8,22 @@
     <script type="text/javascript">
       function test() {
         //load the database
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', '/db/test.db', true);
-        xhr.responseType = 'arraybuffer';
+        const FS = require('fs');
+        const SQL = require('sql.js');
+        var filebuffer = FS.readFileSync('db/test.db');
+        var db = new SQL.Database(filebuffer);
 
-        xhr.onload = e => {
-          var uInt8Array = new Uint8Array(this.response);
-          var db = new SQL.Database(uInt8Array);
-          var contents = db.exec("INSERT INTO Food (Name) Values (\"Leckeres Essen\"); SELECT * FROM ;");
-        }
-        xhr.send()
+        var contents = db.exec("SELECT * FROM Food;");
+        document.getElementById("span1").innerHTML = contents;
       }
 
     </script>
   </head>
 
-  <body>
+  <body onload="test()">
     <h1>
-      the content is:
-      <script type="text/javascript">
-        document.write(content)
-      </script>
+      "the content is: "
+      <span id="span1"></span>
     </h1>
 
   </body>
