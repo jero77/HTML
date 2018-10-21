@@ -2,31 +2,23 @@
   <head>
     <title>"Authenticate User"</title>
     <link rel="stylesheet" href="css/style.css"/>
-    <script src="js/login.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/sql.js" charset="utf-8"></script>
   </head>
 
   <body>
-    <div class="container">
+    <script type="text/javascript">
+      //load the database
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', '/db/test.db', true);
+      xhr.responseType = 'arraybuffer';
 
-      <div class="main">
-        <h2>Authenticate User</h2>
-
-        <form class="form_id" method="post" id="loginform">
-            <label>Username:</label>
-            <input type="text" id="username">
-            <label>Password:</label>
-            <input type="password" id="password">
-            <input type="button" value="Login"
-                onclick="validate()" id="loginbutton">
-        </form>
-
-        <span>
-          <b class="note">Note: </b>Use the following user name & password.<br/>
-          <b class="valid">Username='guestuser' Password='noadmin'</b>
-        </span>
-      </div>
-
-    </div>
+      xhr.onload = e => {
+        var uInt8Array = new Uint8Array(this.response);
+        var db = new SQL.Database(uInt8Array);
+        var contents = db.exec("INSERT INTO Food (Name) Values (\"Leckeres Essen\"); SELECT * FROM ;");
+      }
+      xhr.send()
+    </script>
   </body>
 
 </html>
