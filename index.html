@@ -1,13 +1,32 @@
 <html>
   <head>
-    <title>Test sql.js</title>
+    <title>"Authenticate User"</title>
     <link rel="stylesheet" href="css/style.css"/>
-    <!--<script type="text/javascript" src="js/sql.js"></script>-->
+    <script src="js/login.js" charset="utf-8"></script>
   </head>
 
   <body>
+    <div class="container">
 
+      <div class="main">
+        <h2>Authenticate User</h2>
 
+        <form class="form_id" method="post" id="loginform">
+            <label>Username:</label>
+            <input type="text" id="username">
+            <label>Password:</label>
+            <input type="password" id="password">
+            <input type="button" value="Login"
+                onclick="validate()" id="loginbutton">
+        </form>
+
+        <span>
+          <b class="note">Note: </b>Use the following user name & password.<br/>
+          <b class="valid">Username='guestuser' Password='noadmin'</b>
+        </span>
+      </div>
+
+    </div>
   </body>
 
 </html>
