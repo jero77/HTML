@@ -5,26 +5,9 @@
     <script src="js/login.js" charset="utf-8"></script>
   </head>
 
-  <body>
+  <body onload=validate("guest", "guest")>
     <div class="container">
-
-      <div class="main">
-        <h2>Authenticate User</h2>
-
-        <form class="form_id" method="post" id="loginform">
-            <label>Username:</label>
-            <input type="text" id="username">
-            <label>Password:</label>
-            <input type="password" id="password">
-            <input type="button" value="Login"
-                onclick="validate()" id="loginbutton">
-        </form>
-
-        <span>
-          <b class="note">Note: </b>Use the following user name & password.<br/>
-          <b class="valid">Username='guestuser' Password='noadmin'</b>
-        </span>
-      </div>
+      
 
     </div>
   </body>
