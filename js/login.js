@@ -4,9 +4,6 @@
   @see{@link index.html}
 */
 function validate (username, password) {
-  //Get form input
-  var username = document.getElementById("username").value;
-  var password = document.getElementById("password").value;
 
   //try to validate it
   if (username == "guest" && password == "guest") {
